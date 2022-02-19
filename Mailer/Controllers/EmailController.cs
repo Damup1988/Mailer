@@ -53,7 +53,7 @@ namespace Mailer.Controllers
                 Body = body,
                 ErrorMessage = "",
                 Recipients = newRecipients,
-                SendStatus = "OK",
+                Result = "OK",
                 Subject = subject,
                 TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };

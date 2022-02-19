@@ -18,7 +18,7 @@ namespace Mailer.Models
         [Required]
         public string TimeStamp { get; set; }
         [Required]
-        public string SendStatus { get; set; }
+        public string Result { get; set; }
         public string ErrorMessage { get; set; }
     }
 }

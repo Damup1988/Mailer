@@ -21,7 +21,7 @@ namespace Mailer.Repository
                 },
                 Body = "Good day! This is emailing service.",
                 ErrorMessage = "",
-                SendStatus = "OK",
+                Result = "OK",
                 TimeStamp = DateTime.Now.ToString(CultureInfo.CurrentCulture)
             },
             new Email
@@ -33,7 +33,7 @@ namespace Mailer.Repository
                 },
                 Body = "Good day! This is emailing service.",
                 ErrorMessage = "Can't reach SMTP server",
-                SendStatus = "Failed",
+                Result = "Failed",
                 TimeStamp = DateTime.Now.ToString(CultureInfo.CurrentCulture)
             }
         };
