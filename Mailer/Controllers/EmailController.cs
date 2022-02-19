@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Mailer.Models;
 using Mailer.Repository;
@@ -20,12 +22,44 @@ namespace Mailer.Controllers
         /// <summary>
         /// Return all emails from db
         /// </summary>
-        /// <returns>List of emails</returns>
+        /// <returns>
+        /// List of emails
+        /// </returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Email>>> GetAllEmails()
         {
             var emails = await _repo.GetAllEmailsAsync();
             return Ok(emails);
+        }
+        
+        /// <summary>
+        /// Send email
+        /// </summary>
+        /// <param name="recipients"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <returns>
+        /// Return sent email
+        /// </returns>
+        [HttpPost]
+        public async Task<ActionResult<Email>> SendEmail(string recipients, string subject, string body)
+        {
+            List<string> newRecipients = new List<string>();
+            var listOfRecipients = recipients.Split(',');
+            foreach (var item in listOfRecipients) newRecipients.Add(item);
+            var newEmail = new Email()
+            {
+                Id = Guid.NewGuid(),
+                Body = body,
+                ErrorMessage = "",
+                Recipients = newRecipients,
+                SendStatus = "OK",
+                Subject = subject,
+                TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture)
+            };
+
+            await _repo.CreateEmailAsync(newEmail);
+            return Ok(newEmail);
         }
     }
 }

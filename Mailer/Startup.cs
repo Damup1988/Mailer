@@ -28,7 +28,7 @@ namespace Mailer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IEmailRepo, MockEmailRepo>();
+            services.AddSingleton<IEmailRepo, MockEmailRepo>();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mailer", Version = "v1" }); });
         }
 

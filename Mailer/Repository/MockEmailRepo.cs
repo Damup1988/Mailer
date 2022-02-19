@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Mailer.Models;
 
@@ -20,7 +21,8 @@ namespace Mailer.Repository
                 },
                 Body = "Good day! This is emailing service.",
                 ErrorMessage = "",
-                SendStatus = "OK"
+                SendStatus = "OK",
+                TimeStamp = DateTime.Now.ToString(CultureInfo.CurrentCulture)
             },
             new Email
             {
@@ -31,23 +33,20 @@ namespace Mailer.Repository
                 },
                 Body = "Good day! This is emailing service.",
                 ErrorMessage = "Can't reach SMTP server",
-                SendStatus = "Failed"
+                SendStatus = "Failed",
+                TimeStamp = DateTime.Now.ToString(CultureInfo.CurrentCulture)
             }
         };
 
-        private IEnumerable<Email> GetAllEmail()
-        {
-            return _emails;
-        }
-
         public async Task<IEnumerable<Email>> GetAllEmailsAsync()
         {
-            return await Task.Run(GetAllEmail);
+            return await Task.FromResult(_emails);
         }
 
         public async Task CreateEmailAsync(Email email)
         {
-            throw new System.NotImplementedException();
+            _emails.Add(email);
+            await Task.CompletedTask;
         }
     }
 }
