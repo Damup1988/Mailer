@@ -24,6 +24,15 @@ namespace Mailer.Services
             Password = configuration["SMTPsettings:Password"];
         }
         
+        /// <summary>
+        /// Send email
+        /// </summary>
+        /// <param name="recipients"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <returns>
+        /// Return Email object to pass it to db
+        /// </returns>
         public async Task<Email> SendAsync(string recipients, string subject, string body)
         {
             string result, errorMessage = "";
