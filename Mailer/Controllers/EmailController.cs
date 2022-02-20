@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Mailer.Models;
 using Mailer.Repository;
+using Mailer.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mailer.Controllers
@@ -13,10 +14,12 @@ namespace Mailer.Controllers
     public class EmailController : ControllerBase
     {
         private readonly IEmailRepo _repo;
+        private readonly ISender _sender;
 
-        public EmailController(IEmailRepo repo)
+        public EmailController(IEmailRepo repo, ISender sender)
         {
             _repo = repo;
+            _sender = sender;
         }
         
         /// <summary>
@@ -44,6 +47,8 @@ namespace Mailer.Controllers
         [HttpPost]
         public async Task<ActionResult<Email>> SendEmail(string recipients, string subject, string body)
         {
+            await _sender.SendAsync(recipients, subject, body);
+            
             List<string> newRecipients = new List<string>();
             var listOfRecipients = recipients.Split(',');
             foreach (var item in listOfRecipients) newRecipients.Add(item);

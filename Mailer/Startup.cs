@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mailer.Repository;
+using Mailer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,7 @@ namespace Mailer
         {
             services.AddControllers();
             services.AddSingleton<IEmailRepo, MockEmailRepo>();
+            services.AddTransient<ISender, EmailSender>();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mailer", Version = "v1" }); });
         }
 
