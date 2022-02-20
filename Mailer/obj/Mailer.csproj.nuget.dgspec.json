@@ -1,29 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_bufer\\!dotNet\\Mailer\\Mailer\\Mailer.csproj": {}
+    "C:\\_oneDrive\\OneDrive\\MyDocs\\!LOCALREPOS\\Mailer\\Mailer\\Mailer.csproj": {}
   },
   "projects": {
-    "C:\\_bufer\\!dotNet\\Mailer\\Mailer\\Mailer.csproj": {
+    "C:\\_oneDrive\\OneDrive\\MyDocs\\!LOCALREPOS\\Mailer\\Mailer\\Mailer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_bufer\\!dotNet\\Mailer\\Mailer\\Mailer.csproj",
+        "projectUniqueName": "C:\\_oneDrive\\OneDrive\\MyDocs\\!LOCALREPOS\\Mailer\\Mailer\\Mailer.csproj",
         "projectName": "Mailer",
-        "projectPath": "C:\\_bufer\\!dotNet\\Mailer\\Mailer\\Mailer.csproj",
-        "packagesPath": "C:\\Users\\safarovd\\.nuget\\packages\\",
-        "outputPath": "C:\\_bufer\\!dotNet\\Mailer\\Mailer\\obj\\",
+        "projectPath": "C:\\_oneDrive\\OneDrive\\MyDocs\\!LOCALREPOS\\Mailer\\Mailer\\Mailer.csproj",
+        "packagesPath": "C:\\Users\\damup1988\\.nuget\\packages\\",
+        "outputPath": "C:\\_oneDrive\\OneDrive\\MyDocs\\!LOCALREPOS\\Mailer\\Mailer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\safarovd\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\damup1988\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/GDC-Russia/8377112a-90a9-4591-b0bb-d16ed17cdc4c/_packaging/TicketManager/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -78,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }
