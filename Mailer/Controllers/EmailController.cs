@@ -48,16 +48,13 @@ namespace Mailer.Controllers
         public async Task<ActionResult<Email>> SendEmail(string recipients, string subject, string body)
         {
             await _sender.SendAsync(recipients, subject, body);
-            
-            List<string> newRecipients = new List<string>();
-            var listOfRecipients = recipients.Split(',');
-            foreach (var item in listOfRecipients) newRecipients.Add(item);
+
             var newEmail = new Email()
             {
                 Id = Guid.NewGuid(),
                 Body = body,
                 ErrorMessage = "",
-                Recipients = newRecipients,
+                Recipients = recipients,
                 Result = "OK",
                 Subject = subject,
                 TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture)

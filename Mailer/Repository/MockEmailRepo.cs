@@ -13,12 +13,7 @@ namespace Mailer.Repository
             new Email
             {
                 Id = Guid.NewGuid(),
-                Recipients = new List<string>()
-                {
-                    "damup1988@gmail.com",
-                    "damup1988@yandex.com",
-                    "damup1988@outlook.com"
-                },
+                Recipients = "damup1988@gmail.com,damup1988@yandex.com,damup1988@outlook.com",
                 Body = "Good day! This is emailing service.",
                 ErrorMessage = "",
                 Result = "OK",
@@ -27,10 +22,7 @@ namespace Mailer.Repository
             new Email
             {
                 Id = Guid.NewGuid(),
-                Recipients = new List<string>()
-                {
-                    "damup1988@gmail.com"
-                },
+                Recipients = "damup1988@gmail.com",
                 Body = "Good day! This is emailing service.",
                 ErrorMessage = "Can't reach SMTP server",
                 Result = "Failed",

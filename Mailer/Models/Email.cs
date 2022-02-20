@@ -9,7 +9,7 @@ namespace Mailer.Models
         [Key]
         public Guid Id { get; set; }
         [Required]
-        public List<string> Recipients { get; set; }
+        public string Recipients { get; set; }
         [Required]
         [MaxLength(100)]
         public string Subject { get; set; }
