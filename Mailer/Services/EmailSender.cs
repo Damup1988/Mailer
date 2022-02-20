@@ -1,6 +1,9 @@
-﻿using System.Net;
+﻿using System;
+using System.Globalization;
+using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Mailer.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace Mailer.Services
@@ -21,8 +24,10 @@ namespace Mailer.Services
             Password = configuration["SMTPsettings:Password"];
         }
         
-        public async Task SendAsync(string recipients, string subject, string body)
+        public async Task<Email> SendAsync(string recipients, string subject, string body)
         {
+            string result, errorMessage = "";
+            
             var message = new MailMessage();
             var splitRecipients = recipients.Split(",");
             foreach (var recipient in splitRecipients) message.To.Add(recipient);
@@ -41,9 +46,31 @@ namespace Mailer.Services
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new NetworkCredential(From, Password);
 
-            await smtpClient.SendMailAsync(message);
+            //await smtpClient.SendMailAsync(message);
+            try
+            {
+                await smtpClient.SendMailAsync(message);
+                result = "OK";
+            }
+            catch (Exception e)
+            {
+                result = "ERROR";
+                errorMessage = e.Message.ToString();
+            }
             message.Dispose();
             smtpClient.Dispose();
+
+            var email = new Email()
+            {
+                Id = Guid.NewGuid(),
+                Body = body,
+                ErrorMessage = errorMessage,
+                Recipients = recipients,
+                Result = result,
+                Subject = subject,
+                TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+            };
+            return email;
         }
     }
 }
