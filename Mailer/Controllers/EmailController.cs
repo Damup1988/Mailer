@@ -61,6 +61,7 @@ namespace Mailer.Controllers
             };
 
             await _repo.CreateEmailAsync(newEmail);
+            _repo.SaveChangesAsync();
             return Ok(newEmail);
         }
     }

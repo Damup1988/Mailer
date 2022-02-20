@@ -9,5 +9,6 @@ namespace Mailer.Repository
     {
         Task<IEnumerable<Email>> GetAllEmailsAsync();
         Task CreateEmailAsync(Email email);
+        void SaveChangesAsync();
     }
 }

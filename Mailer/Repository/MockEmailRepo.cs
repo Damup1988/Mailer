@@ -40,5 +40,10 @@ namespace Mailer.Repository
             _emails.Add(email);
             await Task.CompletedTask;
         }
+
+        public void SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

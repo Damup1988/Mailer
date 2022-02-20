@@ -32,7 +32,8 @@ namespace Mailer
             services.AddControllers();
             services.AddDbContext<DbContextEmail>(opt =>
                 opt.UseSqlServer(Configuration.GetSection("ConnectionString").Value));
-            services.AddSingleton<IEmailRepo, MockEmailRepo>();
+            //services.AddSingleton<IEmailRepo, MockEmailRepo>();
+            services.AddScoped<IEmailRepo, SqlEmailRepo>();
             services.AddTransient<ISender, EmailSender>();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mailer", Version = "v1" }); });
         }
